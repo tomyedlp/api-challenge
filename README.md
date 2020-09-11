@@ -34,7 +34,7 @@ Mi modelo de trabajo es el siguiente:
 - - utils
 - - - functions.js
 - - app.js
-- - config.js
+- - config.js (no debería mostrarse acá, debería estar en .gitignore)
 - - index.js (no está acá)
 
 Si se observa que los nombres del controllers y routers son iguales (también aplico para modelos, pero en este caso no va). De esa manera puedo asociarlos y no equivocarme (bueno, todos nos equivocamos alguna vez).
