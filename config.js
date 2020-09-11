@@ -8,15 +8,27 @@
 // WEBSITE: www.tomasbusquets.com
 /*****************************************************/
 
-//PUERTO
-process.env.PORT = process.env.PORT || 3050;
 // ENTORNO
-process.env.NODE_ENV = process.env.NODE_ENV || 'dev'; //dev, host or prod
-process.env.API_URL = process.env.API_URL || `/api/`;
+process.env.NODE_ENV = process.env.NODE_ENV || 'dev'; //dev, host or prod (acá es donde comienza todo)
 
-process.env.SECRET_API_KEY_RECAPTCHA = process.env.SECRET_API_KEY_RECAPTCHA || "6LfsSKcZAAAAAMv7U4ZJ9stRNnbkuiDzhYX0nBIa";
+if(process.env.NODE_ENV === "dev") { // ACÁ PONGO VARIABLES ENV QUE DEBEN SER DISTINTOS AL ESTAR EN DISTINTOS ENTORNOS
+    process.env.PORT = process.env.PORT || 3050;
+} else if (process.env.NODE_ENV === "host") { // SI ESTOY EN UN ENTORNO DE HOSTING DE PRUEBA
+    process.env.PORT = process.env.PORT || 3666;
+} else if(process.env.NODE_ENV === "prod") { // EN PRODUCCIÓN, OFICIAL
+    process.env.PORT = process.env.PORT || 3888;
+} else { // SI PASÓ POR ACÁ ES PORQUE ESCRIBIMOS MAL EL VALUE DE NODE_ENV
+    process.env.PORT = process.env.PORT || 3050;
+}
 
-process.env.EMAIL_HOSTING_USER = process.env.EMAIL_HOSTING_USER || 'no-reply@tomasbusquets.com' //TO-DO: NO REPLY EMAIL HOSTING TO SEND
-process.env.EMAIL_HOSTING_PASS = process.env.EMAIL_HOSTING_PASS || 'NoReply___t0m4sBusqu3ts_1' //TO-DO: NO REPLY EMAIL HOSTING PASS
+process.env.API_BASENAME = process.env.API_BASENAME || `/api/`;
+process.env.API_VERSION = process.env.API_VERSION || `/v1/`;
+process.env.API_URL = process.env.API_URL || process.env.API_BASENAME+process.env.API_VERSION; //unimos la url
 
-process.env.EMAIL_HOSTING = process.env.EMAIL_HOSTING || 'busquets64@gmail.com' //TO-DO: EMAIL HOSTING TO RECEIVE
+// acá suelo poner variables como EMAILS (para usar en nodemailer, por ej), API KEYS, TOKEN, ETC 
+// TODO LO REFERENTE PARA MODIFICAR SIN TENER QUE ANDAR TOCANDO CADA ARCHIVO. ejemplo:
+process.env.SEED = process.env.SEED || 'SJDS829D9N9$·$$%$2#~~~@#FIFI'; // EJEMPLO, ESTO NO DEBE SALIR DE ACÁ, ES PRIVADO, PARA EL JWT
+process.env.WEBPAGE_BASE_URL = process.env.WEBPAGE_BASE_URL || "WEBPAGE.COM"; // la página en producción, de ejemplo.
+process.env.NAME_MARCA = process.env.NAME_MARCA || "WEBPAGE"; // el nombre de la empresa
+process.env.EMAIL_HOSTING_USER = process.env.EMAIL_HOSTING_USER || "no-reply@webpage.com";
+process.env.EMAIL_HOSTING_PASSWORD = process.env.EMAIL_HOSTING_PASSWORD || "1234567";
