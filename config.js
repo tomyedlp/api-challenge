@@ -25,6 +25,7 @@ process.env.API_BASENAME = process.env.API_BASENAME || `/api/`;
 process.env.API_VERSION = process.env.API_VERSION || `/v1/`;
 process.env.API_URL = process.env.API_URL || process.env.API_BASENAME+process.env.API_VERSION; //unimos la url
 
+
 // acá suelo poner variables como EMAILS (para usar en nodemailer, por ej), API KEYS, TOKEN, ETC 
 // TODO LO REFERENTE PARA MODIFICAR SIN TENER QUE ANDAR TOCANDO CADA ARCHIVO. ejemplo:
 process.env.SEED = process.env.SEED || 'SJDS829D9N9$·$$%$2#~~~@#FIFI'; // EJEMPLO, ESTO NO DEBE SALIR DE ACÁ, ES PRIVADO, PARA EL JWT
